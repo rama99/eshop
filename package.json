@@ -1,0 +1,30 @@
+{
+  "name": "eshop",
+  "version": "1.0.0",
+  "description": "this is a sample ecomm application",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ecomm",
+    "node.js",
+    "angular2",
+    "es6"
+  ],
+  "author": "kishore",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "co-express": "^1.2.2",
+    "cookie-parser": "^1.4.3",
+    "ejs": "^2.5.5",
+    "express": "^4.14.0",
+    "express-session": "^1.14.2",
+    "mongodb": "^2.2.16",
+    "only": "0.0.2",
+    "passport": "^0.3.2",
+    "serve-favicon": "^2.3.2",
+    "timeout": "^0.2.1"
+  }
+}
