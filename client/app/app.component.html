@@ -1,0 +1,21 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" [routerLink]="['']" routerLinkActive="active" >Books & NoteBooks</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li ><a [routerLink]="['']">Home</a></li>      
+
+      <li *ngFor="let category of categories">
+            <a [routerLink]="['./acategories' ,category.name , 'products']" routerLinkActive="active">{{category.name}}</a>
+      </li>
+      <li><a [routerLink]="['./cart']" routerLinkActive="active">
+      <span *ngIf="cartCount > 0" class="badge">{{cartCount}}</span>
+      <span class="glyphicon glyphicon-shopping-cart">&nbsp;Bag</span></a></li>
+
+      <li><a [routerLink]="['./about']" routerLinkActive="active">About</a></li>
+    </ul>
+  </div>
+</nav>
+
+    <router-outlet></router-outlet>

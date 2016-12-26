@@ -1,0 +1,43 @@
+import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { BrowserModule , Title } from '@angular/platform-browser';
+import { ReactiveFormsModule , FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
+
+// third party module
+import { ToastModule } from 'ng2-toastr/ng2-toastr';
+
+// components
+import { AppComponent } from './app.component';
+import { HomeComponent } from './home.component';
+import { ProductsComponent } from './products.component';
+import { ProductComponent } from './product.component';
+import { CartComponent } from './cart.component';
+import { AboutComponent } from './about.component';
+
+// services
+import { AppService } from './app.service';
+
+
+@NgModule({
+    imports:[ BrowserModule ,
+              ReactiveFormsModule ,
+              FormsModule , 
+              HttpModule ,
+              RouterModule.forRoot( [
+                  {path:'' , component:HomeComponent},
+                  {path:'acategories/:id/products/:pid' , component:ProductComponent},
+                  //{path:'acategories/productsx/:pid' , component:ProductComponent},
+                  {path:'acategories/:id/products' , component:ProductsComponent},                  
+                  {path:'cart' , component:CartComponent},
+                  {path:'about' , component:AboutComponent}
+              ]),
+              ToastModule ],
+    exports:[],
+    providers:[AppService , Title],
+    declarations:[AppComponent , HomeComponent , ProductsComponent , ProductComponent , CartComponent , AboutComponent ],
+    bootstrap:[AppComponent]
+})
+
+
+export class AppModule { }
