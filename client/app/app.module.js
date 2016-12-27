@@ -22,6 +22,7 @@ var products_component_1 = require("./products.component");
 var product_component_1 = require("./product.component");
 var cart_component_1 = require("./cart.component");
 var about_component_1 = require("./about.component");
+var page_not_found_component_1 = require("./page-not-found.component");
 // services
 var app_service_1 = require("./app.service");
 var AppModule = (function () {
@@ -41,12 +42,15 @@ AppModule = __decorate([
                 //{path:'acategories/productsx/:pid' , component:ProductComponent},
                 { path: 'acategories/:id/products', component: products_component_1.ProductsComponent },
                 { path: 'cart', component: cart_component_1.CartComponent },
-                { path: 'about', component: about_component_1.AboutComponent }
+                { path: 'about', component: about_component_1.AboutComponent },
+                { path: '*', component: page_not_found_component_1.PageNotFoundComponent }
             ]),
             ng2_toastr_1.ToastModule],
         exports: [],
         providers: [app_service_1.AppService, platform_browser_1.Title],
-        declarations: [app_component_1.AppComponent, home_component_1.HomeComponent, products_component_1.ProductsComponent, product_component_1.ProductComponent, cart_component_1.CartComponent, about_component_1.AboutComponent],
+        declarations: [app_component_1.AppComponent, home_component_1.HomeComponent, products_component_1.ProductsComponent, product_component_1.ProductComponent, cart_component_1.CartComponent,
+            about_component_1.AboutComponent,
+            page_not_found_component_1.PageNotFoundComponent],
         bootstrap: [app_component_1.AppComponent]
     }),
     __metadata("design:paramtypes", [])

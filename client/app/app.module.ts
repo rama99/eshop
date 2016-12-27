@@ -14,6 +14,8 @@ import { ProductsComponent } from './products.component';
 import { ProductComponent } from './product.component';
 import { CartComponent } from './cart.component';
 import { AboutComponent } from './about.component';
+import { PageNotFoundComponent } from './page-not-found.component';
+
 
 // services
 import { AppService } from './app.service';
@@ -30,12 +32,15 @@ import { AppService } from './app.service';
                   //{path:'acategories/productsx/:pid' , component:ProductComponent},
                   {path:'acategories/:id/products' , component:ProductsComponent},                  
                   {path:'cart' , component:CartComponent},
-                  {path:'about' , component:AboutComponent}
+                  {path:'about' , component:AboutComponent},
+                  {path:'*',component:PageNotFoundComponent}
               ]),
               ToastModule ],
     exports:[],
     providers:[AppService , Title],
-    declarations:[AppComponent , HomeComponent , ProductsComponent , ProductComponent , CartComponent , AboutComponent ],
+    declarations:[ AppComponent , HomeComponent , ProductsComponent , ProductComponent , CartComponent 
+                  , AboutComponent
+                  , PageNotFoundComponent ],
     bootstrap:[AppComponent]
 })
 
