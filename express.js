@@ -10,6 +10,8 @@ const compression = require('compression');
 const session = require('express-session');
 const csurf = require('csurf');
 const timeout = require('connect-timeout');
+const helmet = require('helmet');
+const expressValidator = require('express-validator');
 //const json = require('json');
 
 // view engine
@@ -29,6 +31,9 @@ module.exports = function(app) {
 
     // compression middleware , size in kb at which to start compression
     app.use(compression({threshold: 1}));
+
+    // helemet middleware , for adding security related headers to http response
+    app.use(helmet());
 
     app.use(favIcon(path.join(__dirname , '/client/favicon.png')));
 

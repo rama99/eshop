@@ -12,6 +12,8 @@
 
 [Bootstrap](http://getbootstrap.com)
 
+[TypeScript](https://www.typescriptlang.org/)
+
     
 
     
