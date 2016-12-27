@@ -12,6 +12,7 @@ const csurf = require('csurf');
 const timeout = require('connect-timeout');
 const helmet = require('helmet');
 const expressValidator = require('express-validator');
+const methodOverride = require('method-override');
 //const json = require('json');
 
 // view engine
@@ -31,6 +32,10 @@ module.exports = function(app) {
 
     // compression middleware , size in kb at which to start compression
     app.use(compression({threshold: 1}));
+
+    // methodOverride  middleware configuration
+    app.use(methodOverride('X-HTTP-Method-override'));
+    app.use(methodOverride('_method'));
 
     // helemet middleware , for adding security related headers to http response
     app.use(helmet());
