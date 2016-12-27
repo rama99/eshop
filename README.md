@@ -1,6 +1,7 @@
 # About [ Books & NoteBooks ] application
 
-    ### A sample E-commerce SPA developed using below technologies
+### A sample E-commerce SPA developed using below technologies
+
     
         <a href="https://www.mongodb.com" target="_blank">Mongo DB</a>
         <a href="http://expressjs.com" target="_blank">Express JS</a>
