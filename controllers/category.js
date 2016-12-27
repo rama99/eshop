@@ -1,15 +1,13 @@
 var db;
 const ObjectID = require('mongodb').ObjectID;
 const MongoClient = require('mongodb').MongoClient;
-const config = require('../config/config');
+const config = require('../config/config.json');
 
 const wrap = require('co-express');
 
 
 function connect() {
-  //return MongoClient.connect(config.mongodbUrl);
-  return MongoClient.connect('mongodb://edatabase:12kafour@ds145118.mlab.com:45118/edatabase');
-  //
+   return MongoClient.connect(config.db.connection);  
 }
 
 // Get All Categories

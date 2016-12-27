@@ -17,13 +17,19 @@
   "dependencies": {
     "body-parser": "^1.15.2",
     "co-express": "^1.2.2",
+    "compression": "^1.6.2",
+    "connect-timeout": "^1.8.0",
     "cookie-parser": "^1.4.3",
+    "csurf": "^1.9.0",
     "ejs": "^2.5.5",
     "express": "^4.14.0",
     "express-session": "^1.14.2",
+    "json": "^9.0.4",
     "mongodb": "^2.2.16",
+    "morgan": "^1.7.0",
     "only": "0.0.2",
     "passport": "^0.3.2",
+    "response-time": "^2.3.2",
     "serve-favicon": "^2.3.2",
     "timeout": "^0.2.1"
   }
