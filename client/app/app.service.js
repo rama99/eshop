@@ -118,6 +118,12 @@ var AppService = (function () {
             .map(function (data) { return data.json(); })
             .catch(this.handleError);
     };
+    AppService.prototype.getOrders = function () {
+        var url = './orders';
+        return this.http.get(url)
+            .map(function (data) { return data.json(); })
+            .catch(this.handleError);
+    };
     // reset the cart
     AppService.prototype.resetCart = function () {
         this.cart = [];

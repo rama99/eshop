@@ -8,6 +8,7 @@ import 'rxjs/add/Observable/of';
 import { Category } from './viewModels/category';
 import { Product } from './viewModels/product';
 import { Cart } from './viewModels/Cart';
+import { Order } from './viewModels/Order';
 import { ShippingDetails } from './viewModels/ShippingDetails';
 
 @Injectable()
@@ -138,6 +139,15 @@ export class AppService {
         return   this.http.post(url , ShippingDetails , options)
                  .map(data => data.json())
                  .catch(this.handleError);
+    }
+
+    getOrders():Observable<Array<Order>> {
+
+        let url = './orders';
+        return     this.http.get(url)
+                            .map(data => data.json())
+                            .catch(this.handleError);
+
     }
 
     // reset the cart

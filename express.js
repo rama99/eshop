@@ -22,6 +22,7 @@ const ejs = require('ejs');
 const index = require('./routes/index');
 const category = require('./routes/category');
 const cart = require('./routes/cart');
+const orders = require('./routes/orders');
 
 
 // core module path
@@ -88,6 +89,8 @@ module.exports = function(app) {
     app.use(['/categories'] , category);
 
     app.use('/cart' , cart);
+
+    app.use('/orders' , orders);
 
     // 404 route
     app.use( function( req , res , next) {
