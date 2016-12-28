@@ -41,10 +41,34 @@ var AppService = (function () {
             .catch(this.handleError);
         ;
     };
-    // Add to cart
+    // Add an item to cart
     AppService.prototype.AddTocart = function (product) {
+        var _this = this;
         var item = { pid: product._id, name: product.name, price: product.price, qty: 1, total: product.price };
-        this.cart.push(item);
+        //this.cart.push(item);
+        // make an AJAX call to save the item in server session
+        var url = './cart/add';
+        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        var requestOptions = new http_1.RequestOptions({ headers: headers });
+        this.http.post(url, item, requestOptions)
+            .map(function (data) {
+            _this.cart.push(item);
+        })
+            .catch(this.handleError)
+            .subscribe(function (data) { });
+    };
+    // Remove an item from cart
+    AppService.prototype.RemoveFromCart = function (pid) {
+        var url = './cart/remove/' + pid;
+        return this.http.delete(url)
+            .catch(this.handleError);
+    };
+    // Get Cart Items
+    AppService.prototype.GetCartItems = function () {
+        var url = "./cart/";
+        return this.http.get(url)
+            .map(function (data) { return data.json(); })
+            .catch(this.handleError);
     };
     // Return all states
     AppService.prototype.GetStates = function () {
@@ -87,9 +111,10 @@ var AppService = (function () {
     };
     // place Order
     AppService.prototype.placeOrder = function (ShippingDetails) {
+        var url = './cart/order';
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         var options = new http_1.RequestOptions({ headers: headers });
-        return this.http.post('./orderplaced', ShippingDetails, options)
+        return this.http.post(url, ShippingDetails, options)
             .map(function (data) { return data.json(); })
             .catch(this.handleError);
     };
@@ -100,6 +125,7 @@ var AppService = (function () {
     // Error Handler
     AppService.prototype.handleError = function (error) {
         // In a real world app, we might use a remote logging infrastructure
+        alert('error');
         var errMsg;
         if (error instanceof http_1.Response) {
             var body = error.json() || '';

@@ -50,8 +50,14 @@ ngDoCheck() {
 }
 
 // Remove Product from Bag
-remove(idx:number) {    
-    this.cart.splice(idx,1);
+remove(idx:number , pid:string) {  
+
+    this.appService.RemoveFromCart(pid).subscribe( {
+                                                     next: (data) =>{this.cart.splice(idx,1);},
+                                                     error: (err) => { this.toaster.error(err)}
+                                                   }
+                                                 );
+    
 }
 
 placeOrder() {

@@ -31,7 +31,7 @@ import { AppService } from './app.service';
                   {path:'acategories/:id/products/:pid' , component:ProductComponent},
                   //{path:'acategories/productsx/:pid' , component:ProductComponent},
                   {path:'acategories/:id/products' , component:ProductsComponent},                  
-                  {path:'cart' , component:CartComponent},
+                  {path:'acart' , component:CartComponent},
                   {path:'about' , component:AboutComponent},
                   {path:'**',component:PageNotFoundComponent}
               ]),

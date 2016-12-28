@@ -21,11 +21,11 @@ const ejs = require('ejs');
 // routes
 const index = require('./routes/index');
 const category = require('./routes/category');
+const cart = require('./routes/cart');
 
 
 // core module path
 const path = require('path');
-
 
 
 module.exports = function(app) {
@@ -46,7 +46,13 @@ module.exports = function(app) {
     app.use(cookieParser());
 
     // express session middleware , this should be after cookie parser
-    //app.use(session());
+    //app.use(session({secret:'clickclick'}));
+
+    app.use(session({
+    resave: false,
+    saveUninitialized: true,
+    secret: 'clickclick'
+    }));
 
     // csurf should be after express session middleware
     //app.use(csurf());
@@ -60,7 +66,7 @@ module.exports = function(app) {
     app.engine('html' , require('ejs').renderFile);
 
     // static files path
-    app.use(express.static('client'));
+    app.use(express.static('client'));    
 
     // body parsing
     app.use(bodyParser.json());
@@ -77,9 +83,11 @@ module.exports = function(app) {
     app.use(logger('dev'));
 
     // routes
-    app.use(['/acategories/:id/products/:pid', '/acategories/:id/products' , '/cart' , '/about' , '/' ] , index);
+    app.use(['/acategories/:id/products/:pid', '/acategories/:id/products' , '/acart' , '/about' , '/' ] , index);
            
     app.use(['/categories'] , category);
+
+    app.use('/cart' , cart);
 
     // 404 route
     app.use( function( req , res , next) {

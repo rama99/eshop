@@ -45,11 +45,46 @@ export class AppService {
                         .catch(this.handleError);;
     }
 
-    // Add to cart
+    // Add an item to cart
     AddTocart(product:Product) 
     {
-        let item = { pid:product._id , name:product.name , price:product.price , qty:1 , total:product.price  };     
-        this.cart.push(item);
+        let item = { pid:product._id , name:product.name , price:product.price , qty:1 , total:product.price  };   
+        //this.cart.push(item);
+
+        // make an AJAX call to save the item in server session
+        let url = './cart/add';
+        let headers = new Headers({'Content-Type':'application/json'});
+        let requestOptions = new RequestOptions({headers:headers});
+       
+        this.http.post(url , item , requestOptions)
+                 .map(data => {                                
+                                this.cart.push(item);
+                              }
+                 )
+                 .catch(this.handleError)
+                 .subscribe( data => { });
+                
+
+    }
+
+    // Remove an item from cart
+    RemoveFromCart(pid:string) {
+
+        let url = './cart/remove/' + pid;
+
+       return this.http.delete(url)
+                  .catch(this.handleError);
+
+    }
+
+    // Get Cart Items
+    GetCartItems():Observable<Array<Cart>> {
+
+        let url = "./cart/";
+        return this.http.get(url)
+               .map(data => data.json())
+               .catch(this.handleError);
+         
     }
 
     // Return all states
@@ -96,11 +131,11 @@ export class AppService {
     // place Order
     placeOrder(ShippingDetails:ShippingDetails):Observable<any> {
 
-        
+        let url = './cart/order';
         let headers:Headers = new Headers({'Content-Type':'application/json'});
         let options:RequestOptions = new RequestOptions({ headers: headers });
        
-        return   this.http.post('./orderplaced',ShippingDetails , options)
+        return   this.http.post(url , ShippingDetails , options)
                  .map(data => data.json())
                  .catch(this.handleError);
     }
@@ -113,6 +148,7 @@ export class AppService {
     // Error Handler
     private handleError (error: Response | any) {
             // In a real world app, we might use a remote logging infrastructure
+            alert('error');
             let errMsg: string;
             if (error instanceof Response) {
                     const body = error.json() || '';

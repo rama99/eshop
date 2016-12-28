@@ -41,7 +41,7 @@ AppModule = __decorate([
                 { path: 'acategories/:id/products/:pid', component: product_component_1.ProductComponent },
                 //{path:'acategories/productsx/:pid' , component:ProductComponent},
                 { path: 'acategories/:id/products', component: products_component_1.ProductsComponent },
-                { path: 'cart', component: cart_component_1.CartComponent },
+                { path: 'acart', component: cart_component_1.CartComponent },
                 { path: 'about', component: about_component_1.AboutComponent },
                 { path: '**', component: page_not_found_component_1.PageNotFoundComponent }
             ]),

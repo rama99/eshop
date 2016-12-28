@@ -40,8 +40,12 @@ var CartComponent = (function () {
         this.cart = this.appService.cart;
     };
     // Remove Product from Bag
-    CartComponent.prototype.remove = function (idx) {
-        this.cart.splice(idx, 1);
+    CartComponent.prototype.remove = function (idx, pid) {
+        var _this = this;
+        this.appService.RemoveFromCart(pid).subscribe({
+            next: function (data) { _this.cart.splice(idx, 1); },
+            error: function (err) { _this.toaster.error(err); }
+        });
     };
     CartComponent.prototype.placeOrder = function () {
         var _this = this;

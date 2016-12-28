@@ -9,10 +9,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var ng2_toastr_1 = require("ng2-toastr/ng2-toastr");
+require("rxjs/add/observable/zip");
 var app_service_1 = require("./app.service");
 var AppComponent = (function () {
-    function AppComponent(appService) {
+    function AppComponent(appService, toaster) {
         this.appService = appService;
+        this.toaster = toaster;
         this.cartCount = 0;
     }
     AppComponent.prototype.ngOnInit = function () {
@@ -21,6 +24,10 @@ var AppComponent = (function () {
             _this.appService.categories = data;
             _this.categories = _this.appService.categories;
             _this.cartCount = _this.appService.cart.length;
+        });
+        this.appService.GetCartItems().subscribe({
+            next: function (data) { _this.appService.cart = data; },
+            error: function (err) { _this.toaster.error('cart==>' + err); }
         });
     };
     AppComponent.prototype.ngOnChanges = function () {
@@ -36,7 +43,7 @@ AppComponent = __decorate([
         selector: 'my-app',
         templateUrl: './app.component.html'
     }),
-    __metadata("design:paramtypes", [app_service_1.AppService])
+    __metadata("design:paramtypes", [app_service_1.AppService, ng2_toastr_1.ToastsManager])
 ], AppComponent);
 exports.AppComponent = AppComponent;
 //# sourceMappingURL=app.component.js.map

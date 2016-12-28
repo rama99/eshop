@@ -22,8 +22,8 @@ var ProductsComponent = (function () {
         this.toaster = toaster;
     }
     ProductsComponent.prototype.ngOnInit = function () {
-        //let categoryID;
         var _this = this;
+        //let categoryID;       
         this.route.params.forEach(function (params) {
             _this.categoryID = params['id'];
             _this.title.setTitle(_this.categoryID);

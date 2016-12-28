@@ -23,9 +23,7 @@ export class ProductsComponent implements  OnInit{
 
     ngOnInit() 
     {
-        //let categoryID;
-
-       
+        //let categoryID;       
         this.route.params.forEach( (params) => {
             this.categoryID = params['id'];            
             this.title.setTitle(this.categoryID);

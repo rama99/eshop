@@ -11,13 +11,12 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let item of cart; let idx = index">
-            {{item.id}}
+        <tr *ngFor="let item of cart; let idx = index">           
             <td> {{item.name}}</td>
             <td>{{item.price | currency}}</td>
             <td>{{item.qty}}</td>
             <td>{{item.total | currency}}</td>
-            <td><a (click)="remove(idx)"><span class="glyphicon glyphicon-remove-sign"></span></a></td>
+            <td><a (click)="remove(idx , item.pid)"><span class="glyphicon glyphicon-remove-sign"></span></a></td>
         </tr>
     </tbody>
     

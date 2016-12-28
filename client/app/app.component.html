@@ -9,7 +9,7 @@
       <li *ngFor="let category of categories">
             <a [routerLink]="['./acategories' ,category.name , 'products']" routerLinkActive="active">{{category.name}}</a>
       </li>
-      <li><a [routerLink]="['./cart']" routerLinkActive="active">
+      <li><a [routerLink]="['./acart']" routerLinkActive="active">
       <span *ngIf="cartCount > 0" class="badge">{{cartCount}}</span>
       <span class="glyphicon glyphicon-shopping-cart">&nbsp;Bag</span></a></li>
 
