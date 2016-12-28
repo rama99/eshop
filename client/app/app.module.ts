@@ -33,7 +33,7 @@ import { AppService } from './app.service';
                   {path:'acategories/:id/products' , component:ProductsComponent},                  
                   {path:'cart' , component:CartComponent},
                   {path:'about' , component:AboutComponent},
-                  {path:'*',component:PageNotFoundComponent}
+                  {path:'**',component:PageNotFoundComponent}
               ]),
               ToastModule ],
     exports:[],

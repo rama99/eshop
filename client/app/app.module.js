@@ -43,7 +43,7 @@ AppModule = __decorate([
                 { path: 'acategories/:id/products', component: products_component_1.ProductsComponent },
                 { path: 'cart', component: cart_component_1.CartComponent },
                 { path: 'about', component: about_component_1.AboutComponent },
-                { path: '*', component: page_not_found_component_1.PageNotFoundComponent }
+                { path: '**', component: page_not_found_component_1.PageNotFoundComponent }
             ]),
             ng2_toastr_1.ToastModule],
         exports: [],
