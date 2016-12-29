@@ -39,7 +39,7 @@ module.exports = function(app) {
     app.use(methodOverride('_method'));
 
     // helemet middleware , for adding security related headers to http response
-    app.use(helmet());
+    //app.use(helmet());
 
     app.use(favIcon(path.join(__dirname , '/client/favicon.png')));
 
@@ -49,10 +49,13 @@ module.exports = function(app) {
     // express session middleware , this should be after cookie parser
     //app.use(session({secret:'clickclick'}));
 
-    app.use(session({
-    resave: false,
-    saveUninitialized: true,
-    secret: 'clickclick'
+    app.use(session({ 
+    secret: 'clickclick',
+    cookie: {
+        path:'/',
+        httpOnly:true,
+        maxAge:null
+    }
     }));
 
     // csurf should be after express session middleware

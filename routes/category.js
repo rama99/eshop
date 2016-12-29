@@ -40,11 +40,13 @@ router.get('/:id/products' , wrap(function *(req , res , next) {
     try 
     {
         console.log('/categories/:id/products');
-        let products = yield category.getProducts(req , res , next);
+        let products = yield category.getProducts(req , res , next);        
+       
         res.status(200).send(products);
     }
     catch(err) 
     {
+        
         res.status(500).send(err);
     }
 }))
