@@ -6,6 +6,10 @@ import 'rxjs/add/observable/zip';
 import { AppService } from './app.service';
 import { Category } from './viewModels/category';
 
+import "jquery";
+//import  "block-ui";
+
+
 @Component({
     moduleId:module.id,
     selector:'my-app',
@@ -26,6 +30,10 @@ export class AppComponent implements OnInit , OnChanges , DoCheck {
            this.appService.categories = data;
            this.categories = this.appService.categories;
            this.cartCount = this.appService.cart.length;
+
+           $("document").ready( function() {
+              // $.blockUI();
+           })
 
        });  
 

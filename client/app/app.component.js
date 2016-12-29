@@ -12,6 +12,8 @@ var core_1 = require("@angular/core");
 var ng2_toastr_1 = require("ng2-toastr/ng2-toastr");
 require("rxjs/add/observable/zip");
 var app_service_1 = require("./app.service");
+require("jquery");
+//import  "block-ui";
 var AppComponent = (function () {
     function AppComponent(appService, toaster) {
         this.appService = appService;
@@ -24,6 +26,9 @@ var AppComponent = (function () {
             _this.appService.categories = data;
             _this.categories = _this.appService.categories;
             _this.cartCount = _this.appService.cart.length;
+            $("document").ready(function () {
+                // $.blockUI();
+            });
         });
         this.appService.GetCartItems().subscribe({
             next: function (data) { _this.appService.cart = data; },

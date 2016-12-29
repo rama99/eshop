@@ -84,7 +84,7 @@ module.exports = function(app) {
     app.use(logger('dev'));
 
     // routes
-    app.use(['/acategories/:id/products/:pid', '/acategories/:id/products' , '/acart' , '/about' , '/' ] , index);
+    app.use(['/acategories/:id/products/:pid', '/acategories/:id/products' , '/acart' , '/about' ,'/aorders', '/' ] , index);
            
     app.use(['/categories'] , category);
 
