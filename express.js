@@ -41,7 +41,7 @@ module.exports = function(app) {
     app.use(methodOverride('_method'));
 
     // helemet middleware , for adding security related headers to http response
-    //app.use(helmet());
+    app.use(helmet());
 
     app.use(favIcon(path.join(__dirname , '/client/favicon.png')));
 

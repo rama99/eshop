@@ -4,7 +4,7 @@ const cluster = require('cluster');
 const numCPUs = require('os').cpus().length;
 const app = express();
 
-if(cluster.isMaster) {
+/*if(cluster.isMaster) {
     console.log('Fork %s worker(s) from master' , numCPUs);
 
     for(var idx = 0 ; idx < numCPUs ; idx++) {
@@ -20,7 +20,7 @@ if(cluster.isMaster) {
     })
 
 }
-else {
+else {*/
 
     // express configuration
     require('./express')(app);
@@ -28,6 +28,7 @@ else {
     let port = process.env.port || 3000;
       
     app.listen(port , () => {
-     console.log('Worker (%s) is now listining to http://localhost:%s' , cluster.worker.process.pid , port); 
+     //console.log('Worker (%s) is now listining to http://localhost:%s' , cluster.worker.process.pid , port); 
+     console.log('Worker  is now listining to http://localhost:%s'  , port);
     })
-}
+//}

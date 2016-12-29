@@ -19,7 +19,7 @@ router.post('/add' , function(req , res , next) {
     let cart = req.session.cart || [];
     cart.push(req.body);
     req.session.cart = cart;
-    console.log(' Session ID ' , req.sessionID);    
+    console.log(' Session ID ' , req.sessionID , req.session.cart);    
     res.status(200).send(req.session.cart);
 
 })
