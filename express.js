@@ -31,6 +31,8 @@ const path = require('path');
 
 module.exports = function(app) {   
     
+    //app.disable('etag');
+    
     // compression middleware , size in kb at which to start compression
     app.use(compression({threshold: 1}));
 
