@@ -29,8 +29,8 @@ const orders = require('./routes/orders');
 const path = require('path');
 
 
-module.exports = function(app) {
-
+module.exports = function(app) {   
+    
     // compression middleware , size in kb at which to start compression
     app.use(compression({threshold: 1}));
 
@@ -77,7 +77,7 @@ module.exports = function(app) {
     app.use(bodyParser(bodyParser.urlencoded({extended: false})));
 
     // middleware response time, sets  X-RESPONSE-TIME response header
-    app.use(responseTime({digits:4}));
+    //app.use(responseTime({digits:4}));
 
     // Disable X-Powered-By , for security
     app.set('x-powered-by', false);

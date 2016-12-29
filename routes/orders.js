@@ -7,7 +7,7 @@ const ordersCtrl = require('../controllers/orders');
 
 router.get('/', wrap(function *(req , res , next) {
    let orders = yield ordersCtrl.orders();
-   res.status(200).send(orders);
+   res.send(orders);
 }))
 
 module.exports = router;

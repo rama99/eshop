@@ -11,7 +11,7 @@ router.get('/' , wrap(function *(req , res , next) {
     try 
     {
         let categories = yield category.getCategories(req , res , next);
-        res.status(200).send(categories);
+        res.send(categories);
     }
     catch(err) 
     {
@@ -26,7 +26,7 @@ router.get('/:id/products/:pid' ,  wrap(function *(req , res , next) {
     {
         console.log('url' , req.url);
         let product = yield category.getProduct(req , res , next);
-        res.status(200).send(product);
+        res.send(product);
     }
     catch(err) 
     {
@@ -41,8 +41,8 @@ router.get('/:id/products' , wrap(function *(req , res , next) {
     {
         console.log('/categories/:id/products');
         let products = yield category.getProducts(req , res , next);        
-       
-        res.status(200).send(products);
+       console.log('After Products');
+        res.send(products);
     }
     catch(err) 
     {

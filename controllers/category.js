@@ -27,8 +27,10 @@ return yield new Promise( function(resolve  , reject) {
 
 // Get all products for a given category
 module.exports.getProducts = wrap (function *(req , res , next) {
+    console.log('Before Products - 1');
     db = yield connect();
     let id = req.params.id;
+    console.log('Before Products - 2');
     return yield db.collection('products').find({category:id}).toArray();
 })
 

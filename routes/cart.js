@@ -33,7 +33,7 @@ router.delete('/remove/:pid' , function(req , res , next) {
     cart.splice(pos , 1);
     console.log(' Session ID ' , req.sessionID);  
     req.session.cart = cart;
-    res.status(200).send({});
+    res.send({});
 })
 
 // place an order
@@ -41,7 +41,7 @@ router.post('/order', wrap(function *(req , res , next) {
 
     yield cartCtrl.order(req , res , next);
     req.session.cart = [];
-    res.status(200).send({'created':'ok'}); 
+    res.send({'created':'ok'}); 
 
 }));
 
