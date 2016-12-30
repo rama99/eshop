@@ -11,17 +11,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var ng2_toastr_1 = require("ng2-toastr/ng2-toastr");
 require("rxjs/add/observable/zip");
+var router_1 = require("@angular/router");
+var forms_1 = require("@angular/forms");
 var app_service_1 = require("./app.service");
 require("jquery");
 //import  "block-ui";
 var AppComponent = (function () {
-    function AppComponent(appService, toaster) {
+    function AppComponent(appService, toaster, route, router, formBuilder) {
         this.appService = appService;
         this.toaster = toaster;
+        this.route = route;
+        this.router = router;
+        this.formBuilder = formBuilder;
         this.cartCount = 0;
     }
     AppComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.formGroup = this.formBuilder.group({
+            "search": ["", forms_1.Validators.compose([forms_1.Validators.required])]
+        });
         this.appService.GetCategories().subscribe(function (data) {
             _this.appService.categories = data;
             _this.categories = _this.appService.categories;
@@ -40,6 +48,12 @@ var AppComponent = (function () {
     AppComponent.prototype.ngDoCheck = function () {
         this.cartCount = this.appService.cart.length;
     };
+    AppComponent.prototype.onSearch = function () {
+        //console.log('Current Route : ' , this.router.url);
+        if (this.formGroup.valid) {
+            this.router.navigate(['asearch', { search: this.formGroup.controls['search'].value }]);
+        }
+    };
     return AppComponent;
 }());
 AppComponent = __decorate([
@@ -48,7 +62,8 @@ AppComponent = __decorate([
         selector: 'my-app',
         templateUrl: './app.component.html'
     }),
-    __metadata("design:paramtypes", [app_service_1.AppService, ng2_toastr_1.ToastsManager])
+    __metadata("design:paramtypes", [app_service_1.AppService, ng2_toastr_1.ToastsManager,
+        router_1.ActivatedRoute, router_1.Router, forms_1.FormBuilder])
 ], AppComponent);
 exports.AppComponent = AppComponent;
 //# sourceMappingURL=app.component.js.map

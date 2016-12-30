@@ -23,6 +23,7 @@ const index = require('./routes/index');
 const category = require('./routes/category');
 const cart = require('./routes/cart');
 const orders = require('./routes/orders');
+const products = require('./routes/products');
 
 
 // core module path
@@ -97,6 +98,8 @@ module.exports = function(app) {
 
     app.use('/orders' , orders);
 
+    app.use('/products' , products);
+
     // 404 route
     app.use( function( req , res , next) {
         console.log(req.url);
@@ -107,8 +110,5 @@ module.exports = function(app) {
     app.use( (err , req , res , next) => {
         res.send(err.stack);
     })
-
-
-
 
 }

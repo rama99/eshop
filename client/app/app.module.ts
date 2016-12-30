@@ -16,6 +16,7 @@ import { CartComponent } from './cart.component';
 import { AboutComponent } from './about.component';
 import { PageNotFoundComponent } from './page-not-found.component';
 import { OrderDetailsComponent} from './order-details.component';
+import { ProductSearchComponent } from './product-search.component';
 
 
 // services
@@ -35,6 +36,7 @@ import { AppService } from './app.service';
                   {path:'acart' , component:CartComponent},
                   {path:'about' , component:AboutComponent},
                   {path:'aorders' , component:OrderDetailsComponent},
+                  {path:'asearch' , component: ProductSearchComponent},
                   {path:'**',component:PageNotFoundComponent}
               ]),
               ToastModule ],
@@ -43,7 +45,8 @@ import { AppService } from './app.service';
     declarations:[ AppComponent , HomeComponent , ProductsComponent , ProductComponent , CartComponent 
                   , AboutComponent
                   , PageNotFoundComponent 
-                  , OrderDetailsComponent],
+                  , OrderDetailsComponent
+                  , ProductSearchComponent],
     bootstrap:[AppComponent]
 })
 

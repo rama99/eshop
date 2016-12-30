@@ -150,6 +150,15 @@ export class AppService {
 
     }
 
+    searchProducts(search:string):Observable<Array<Product>> {
+
+        let url ="./products?search=" + search;
+        return this.http.get(url)
+                        .map(data => data.json())
+                        .catch(this.handleError);
+
+    }
+
     // reset the cart
     resetCart() {
         this.cart = [];
@@ -157,8 +166,7 @@ export class AppService {
 
     // Error Handler
     private handleError (error: Response | any) {
-            // In a real world app, we might use a remote logging infrastructure
-            alert('error');
+            // In a real world app, we might use a remote logging infrastructure           
             let errMsg: string;
             if (error instanceof Response) {
                     const body = error.json() || '';

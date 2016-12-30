@@ -13,8 +13,22 @@
       <span *ngIf="cartCount > 0" class="badge">{{cartCount}}</span>
       <span class="glyphicon glyphicon-shopping-cart">&nbsp;Bag</span></a></li>
       <li><a [routerLink]="['./aorders']" routerLinkActive="active">Order Details</a></li>
-      <li><a [routerLink]="['./about']" routerLinkActive="active">About</a></li>     
-    </ul>
+      <li><a [routerLink]="['./about']" routerLinkActive="active">About</a></li>
+      <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+    </ul>  
+
+    <form class="navbar-form" [formGroup]="formGroup" (ngSubmit)="onSearch()">
+        <div class="form-group">
+          <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
+          <div class="input-group">    
+            <input type="text" formControlName="search" class="form-control" id="exampleInputAmount" placeholder="Item Name">      
+          </div>
+        </div>
+      <button type="submit" class="btn btn-primary" value="Search">
+          <span class="glyphicon glyphicon-search"></span> Search
+      </button>    
+      </form><br>
+
   </div>
 </nav>
 

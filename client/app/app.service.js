@@ -124,14 +124,19 @@ var AppService = (function () {
             .map(function (data) { return data.json(); })
             .catch(this.handleError);
     };
+    AppService.prototype.searchProducts = function (search) {
+        var url = "./products?search=" + search;
+        return this.http.get(url)
+            .map(function (data) { return data.json(); })
+            .catch(this.handleError);
+    };
     // reset the cart
     AppService.prototype.resetCart = function () {
         this.cart = [];
     };
     // Error Handler
     AppService.prototype.handleError = function (error) {
-        // In a real world app, we might use a remote logging infrastructure
-        alert('error');
+        // In a real world app, we might use a remote logging infrastructure           
         var errMsg;
         if (error instanceof http_1.Response) {
             var body = error.json() || '';
