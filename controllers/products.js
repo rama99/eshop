@@ -10,5 +10,5 @@ function connect() {
 
 module.exports.Getproducts = wrap(function *(req , res , next) {
     db = yield connect();
-    return yield db.collection('products').find({'name': {'$regex': req.query.search}}).toArray();
+    return yield db.collection('products').find({'name': {'$regex': req.query.search , $options: '-i'}}).toArray();
 })
