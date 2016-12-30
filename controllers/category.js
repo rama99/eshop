@@ -29,6 +29,12 @@ return yield new Promise( function(resolve  , reject) {
 module.exports.getProducts = wrap (function *(req , res , next) {
     console.log('Before Products - 1');
     db = yield connect();
+
+      if(!db) {
+          console.log('second try');
+        connect();
+    }
+
     let id = req.params.id;
     console.log('Before Products - 2');
     return yield db.collection('products').find({category:id}).toArray();

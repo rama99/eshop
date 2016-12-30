@@ -19,18 +19,18 @@ export class ProductSearchComponent implements OnInit {
 
     constructor(private service:AppService ,  private route:ActivatedRoute , private router:Router, private toaster:ToastsManager ) {}
 
-    ngOnInit() {
+    ngOnInit() {        
 
-        this.route.params.subscribe( (params) => {
+            this.route.params.subscribe( (params) => {
             this.search = params['search'];
-        })
 
-        this.service.searchProducts(this.search).subscribe( {
+             this.service.searchProducts(this.search).subscribe( {
                                                     next: (data) => { 
                                                                         this.products = data;
                                                                     },
                                                     error: (err) => { this.toaster.error(err) }
-                                                 })
+                                                 });
+        })      
 
     }
 

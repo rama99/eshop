@@ -21,14 +21,15 @@ var ProductSearchComponent = (function () {
     }
     ProductSearchComponent.prototype.ngOnInit = function () {
         var _this = this;
+        console.log('ngOnInit()');
         this.route.params.subscribe(function (params) {
             _this.search = params['search'];
-        });
-        this.service.searchProducts(this.search).subscribe({
-            next: function (data) {
-                _this.products = data;
-            },
-            error: function (err) { _this.toaster.error(err); }
+            _this.service.searchProducts(_this.search).subscribe({
+                next: function (data) {
+                    _this.products = data;
+                },
+                error: function (err) { _this.toaster.error(err); }
+            });
         });
     };
     return ProductSearchComponent;
